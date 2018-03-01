@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link href="bootstrap.min.css" rel="stylesheet" />
+    <style>
+
+        #sendPanel .user-item {
+            float: left;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        #loadPanel .user-item {
+            display: list-item;
+            padding: 5px;
+            margin: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div onclick="SelectUser(this);" data-id="" title="" class="label label-default user-item"></div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2 .col-xs-2 .col-sm-2">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            好友列表
+                        </div>
+                        <div class="panel-body">
+                            <div class="btn-toolbar" role="toolbar" aria-label="...">
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <input type="button" value="登录" onclick="host.login();" class="form-control" />
+                                </div>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <input type="button" value="好友" onclick="host.getFriends();" class="btn btn-default" />
+                                    <input type="button" value="群聊" onclick="host.getChatRooms();" class="btn btn-default" />
+                                    <input type="button" value="公众号" onclick="host.getMPs();" class="btn btn-default" />
+                                </div>
+                                <div class="btn-group" data-toggle="buttons">
+                                    <label class="btn btn-primary active" onclick="$('#loadPanel').children().each(function () { $(this).is(':hidden') ? '' : $(this).click(); });">
+                                        <input type="checkbox" autocomplete="off" />全选
+                                    </label>
+                                    <label class="btn btn-primary" onclick="$('#sendPanel').children().click();">
+                                        <input type="checkbox" autocomplete="off" />取消
+                                    </label>
+                                </div>
+                            </div>
+                            <input type="text" id="txtSearch" onkeydown="setTimeout(search(),200)" class="form-control" placeholder="Search">
+                            <div id="loadPanel"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-10 .col-xs-10 .col-sm-10">
+                <div class="row">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" id="txtCount">
+                            发送消息
+                        </div>
+                        <div class="panel-body">
+                            <div id="sendPanel" class="row">
+
+                            </div>
+                            <hr />
+                            <div class="dropdown">
+                                <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    插入参数
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dLabel" id="msgHelp">
+                                    <li>
+                                        NickName
+                                    </li>
+                                    <li>
+                                        RemarkName
+                                    </li>
+                                    <li>
+                                        Sex
+                                    </li>
+                                    <li>
+                                        Signature
+                                    </li>
+                                    <li>
+                                        PYInitial
+                                    </li>
+                                    <li>
+                                        Province
+                                    </li>
+                                    <li>
+                                        City
+                                    </li>
+                                    <li>
+                                        DisplayName
+                                    </li>
+                                </ul>
+                            </div>
+                            <textarea type="text" rows="10" id="txtMsg" class="form-control"></textarea>
+                            <div class="btn-group" role="group" aria-label="...">
+                                <input type="button" value="发送" onclick="SendMsg();" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>
